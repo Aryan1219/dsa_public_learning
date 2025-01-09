@@ -184,8 +184,13 @@ def bubbleSort(arr: list[int]):
         if did_swap  == 0:
             break
         print('runs')
-                                                                fuck you ara
 
+def insertion_sort(arr : list[int]):
+    for i in range(len(arr)):
+        j = i
+        while(j > 0 and arr[j-1] > arr[j]):
+            swap(arr,j-1,j)
+            j -= 1
 
 
 if __name__ == "__main__":
@@ -195,7 +200,7 @@ if __name__ == "__main__":
     # for value in inputs:
     #     n = int(value.strip())
     #     print(sumOfDivisors(n))
-    inputs = [1,2,3,4,6,5]
+    inputs = [-1,6,-2,0,98745,2,3,3]
 
-    bubbleSort(inputs)
+    insertion_sort(inputs)
     print(inputs)
