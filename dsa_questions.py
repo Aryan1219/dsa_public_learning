@@ -192,6 +192,134 @@ def insertion_sort(arr : list[int]):
             swap(arr,j-1,j)
             j -= 1
 
+def find_largest(arr: list[int]):
+    maximum = arr[0] 
+    for i in arr:
+        if i > maximum: 
+            maximum =  i
+    return maximum
+
+
+def get_second_largest(arr: list[int]):
+    largest = arr[0] 
+    slargest = -1  
+    for i in range(len(arr)):
+        if arr[i] > largest:
+            slargest = largest
+            largest = arr[i]
+        elif arr[i] < largest and arr[i] > slargest:
+            slargest = arr[i]
+    return slargest
+
+def get_second_smallest(arr : list[int]):
+    import sys
+    smallest =  arr[0]
+    ssmallest = sys.maxsize
+    for i in range(len(arr)):
+        if arr[i] < smallest: 
+            ssmallest = smallest
+            smallest = arr[i]
+        elif arr[i] > smallest and arr[i] < ssmallest:
+            ssmallest = arr[i]
+    return ssmallest
+
+def is_sorted(arr : list[int]):
+    flag = 0
+    for i in range(1,len(arr)):
+        if arr[i] > arr[i-1]:
+            continue
+        else :
+            if flag == 1:
+                return False
+            flag += 1
+    return True
+
+def check(arr: list[int]) -> bool:
+    flag = 0
+    for i in range(1,len(arr)):
+        if arr[i] >= arr[i-1]:
+            continue
+        else :
+            if flag == 0:
+                flag += 1
+            else:
+                return False
+    if flag == 1:
+        if arr[0] < arr[len(arr)-1]:
+            return False
+    return True
+
+def removeDuplicates(arr: list[int]) -> int:
+    i = 0
+    for j in range(1,len(arr)):
+        if arr[j] != arr[i]:
+            i += 1
+            arr[i] = arr[j]
+    print(arr)
+    return i+1
+
+
+def left_rotate_by_k(arr : list[int]):
+    #rotate the k elements of the array partially and then rotate the remaining array as well in place
+    #rotate the array completely , solved!!
+    pass
+
+def move_zeros_to_end(arr : list[int]):
+    # flag = 0
+    # i = 0
+    length = len(arr)
+    # while flag < length:
+    #     if arr[i] == 0:
+    #         del arr[i]
+    #         arr.append(0)
+    #     else:
+    #         i+=1
+    #     flag += 1 
+
+    for k in range(length):
+        if arr[k] == 0:
+            j = k
+            for i in range(k+1,length):
+                if arr[i] != 0:
+                    arr[j],arr[i] = arr[i],arr[j]
+                    j+=1
+            break
+
+def find_union(a,b):
+    # code here 
+    n1 = len(a)
+    n2 = len(b)
+    
+    i = 0
+    j = 0
+    
+    union = []
+    
+    while i < n1 and j < n2:
+        if a[i] < b[j]:
+            if len(union) == 0 or union[-1] != a[i]:
+                union.append(a[i])
+            i += 1
+        else :
+            if len(union) == 0 or union[-1] != b[j]:
+                union.append(b[j])
+            j += 1
+            
+            
+    while i < n1:
+        if union[-1] != a[i]:
+            union.append(a[i])
+        i+= 1
+    
+    while j < n2:
+        if union[-1] != b[j]:
+            union.append(b[j])
+        j+= 1
+    
+    return union
+    
+        
+
 
 if __name__ == "__main__":
     # with open("/home/aryan/Desktop/DSA_prep/inputs.txt", "r") as file:
@@ -200,7 +328,8 @@ if __name__ == "__main__":
     # for value in inputs:
     #     n = int(value.strip())
     #     print(sumOfDivisors(n))
-    inputs = [-1,6,-2,0,98745,2,3,3]
+    a = [-5, -4, -1, 1, 7]
+    b= [-3 ,0, 1, 8]
+    print(find_union(a,b))
 
-    insertion_sort(inputs)
-    print(inputs)
+
