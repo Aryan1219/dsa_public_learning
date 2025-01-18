@@ -270,12 +270,59 @@ def pattern22(n: int):
             print(abs(matrix[i][j]-4),end=' ')
         new_line()
 
+def print_a():
+    for i in range(9):
+        for j in range(5):
+            if i == 0 or i == 4:
+                print('*' , end = ' ')
+            else:
+                if j == 0 or j == 4:
+                    print('*', end = ' ')
+                else :
+                    print(' ', end = ' ')
+        print('\n')
+
+def print_d():
+    for i in range(5):
+        for j in range(5):
+            if i == 0 or i == 4:
+                if j == 4:
+                    pass
+                else: 
+                    print('*' , end = ' ')
+            else:
+                if j == 0 or j == 4:
+                    print('*', end = ' ')
+                else :
+                    print(' ', end = ' ')
+        print('\n')
+
+def print_y(n : int):
+    if n %2 != 0:
+        cond = n//2
+    else:
+        cond = (n//2)-1
+
+    for i in range(n):
+        for j in range(n):
+            if i <= cond:
+                if j == i or j == n-i-1:
+                    print('*', end=' ')
+                else:
+                    print(' ', end = ' ')
+            else:
+                if j == n-i-1:
+                    print('*', end = ' ')
+                else:
+                    print(' ', end = ' ')
+        print()
 
 
 
 if __name__ == "__main__":
-    t = int(input())  # Number of test cases
-    for _ in range(t):
-        n = int(input()) 
-        print("\n") # Input for each test case
-        pattern22(n)  # Call the appropriate function
+    # t = int(input())  # Number of test cases
+    # for _ in range(t):
+    #     n = int(input()) 
+    #     print("\n") # Input for each test case
+    #     pattern22(n)  # Call the appropriate function
+    print_y(7)
